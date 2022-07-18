@@ -14,4 +14,8 @@ export class AppComponent {
 		{title: 'Want to learn Angular components', text:'I am still learning', id:1},
 		{title: 'Next block', text:'Will be about derectives and pipes', id:2}
 	]
+	updatePosts(post: Post) {
+		this.posts.unshift(post)
+		console.log('Post', post)
+	}
 }
