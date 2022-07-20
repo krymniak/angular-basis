@@ -9,7 +9,8 @@ import {
 	Input,
 	OnChanges, OnDestroy,
 	OnInit, Output,
-	SimpleChanges
+	SimpleChanges,
+	ViewEncapsulation
 } from '@angular/core';
 import { Post } from '../app.component';
 
@@ -17,7 +18,8 @@ import { Post } from '../app.component';
 	selector: 'app-post',
 	templateUrl: './post.component.html',
 	styleUrls: ['./post.component.scss'],
-	changeDetection: ChangeDetectionStrategy.Default
+	changeDetection: ChangeDetectionStrategy.Default,
+	encapsulation: ViewEncapsulation.None
 })
 export class PostComponent implements
 	OnInit,

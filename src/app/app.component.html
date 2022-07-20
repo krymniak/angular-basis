@@ -1,7 +1,7 @@
 <div class="container">
 	<h1>Angular Components</h1>
 	<app-post-form (onAdd)="updatePosts($event)"></app-post-form>
-
+	<h2>Subheader</h2>
 	<hr>
 
 	<app-post *ngFor="let p of posts" [post]="p" (onRemove)="removePost($event)">
