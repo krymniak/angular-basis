@@ -7,7 +7,7 @@ import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } fr
 
 export class StyleDirective {
 @Input('appStyle') color: string = 'blue'
-@Input() fontWeight = 'normal'
+@Input() dStyles!: {border?: string, fontWeight?: string, borderRadius?: string}
 
 	@HostBinding('style.color') elColor:any = null
 	constructor(private el:ElementRef, private r:Renderer2) {
