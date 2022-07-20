@@ -1,65 +1,15 @@
-<h1>Hello Angular World</h1>
+<div class="container">
+	<h1>Angular Components</h1>
+	<app-post-form (onAdd)="updatePosts($event)"></app-post-form>
+	<h2>Subheader</h2>
+	<hr>
 
-<!-- <p>{{ title }}</p>
-<p><strong>{{ number-2 }}</strong></p>
-<p><strong>{{ arr }}</strong></p>
-<p>{{obj.b.c}}</p>
-<app-post></app-post> -->
-<!-- <button (click)="onClick()">Click me!</button>
-<input type="text" (input)="onInput($event)">
-<p><strong>{{inputValue}}</strong></p> -->
-
-<!-- <input type="text" [(ngModel)]="title">
-<p>{{title}}</p> -->
-
-<!-- <button (click)="backgroundToggle = !backgroundToggle">Toggle</button>
-<button (click)="backgroundToggle = 111">Switch 111</button> -->
-
-<!-- <div [ngStyle]="{
-	width:'300px',
-	height:'300px',
-	borderRadius:'5px',
-	border:'1px solid #ccc',
-	background: backgroundToggle ? 'red' : 'blue'
-}">
-</div> -->
-
-<!-- <p [ngClass]="{
-	red: backgroundToggle,
-	blue: !backgroundToggle
-}">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, accusamus?</p> -->
-
-<!-- <p [class.blue]="!backgroundToggle" 
-[class.red]="backgroundToggle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, voluptatum.</p> -->
-
-<!-- <p *ngIf="backgroundToggle; else blueP" class="red">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-	dolorem?</p>
-<ng-template #blueP>
-	<p class="blue">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis, deleniti.</p>
-</ng-template> -->
-
-<!-- <div [ngSwitch]="backgroundToggle">
-	<p *ngSwitchCase="true" class="red">Lorem, ipsum.</p>
-	<p *ngSwitchCase="false" class="blue">Lorem, ipsum.asdasd</p>
-	<p *ngSwitchDefault="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, ducimus?</p>
-</div> -->
-
-<!-- <ul>
-	<li *ngFor="let n of arr; let idx = index">
-		{{idx}} {{n}}
-	</li>
-</ul> -->
-
-<!-- <ul style="list-style: none;">
-	<li *ngFor="let post of objs">
-		<p>{{post.title}} <b>{{post.author}}</b></p>
-		<ul>
-			<li *ngFor="let comment of post.comments">
-				<p>{{comment.name}}</p>
-				<p>{{comment.text}}</p>
-			</li>
-		</ul>
-	</li>
-</ul> -->
-
-<p>{{now | date | uppercase}}</p>
+	<app-post *ngFor="let p of posts" [post]="p" (onRemove)="removePost($event)">
+		<div #info>
+			<small *ngIf="p.text.length > 10; else short ">Big post</small>
+			<ng-template #short>
+				<small>Short post</small>
+			</ng-template>
+		</div>
+	</app-post>
+</div>
