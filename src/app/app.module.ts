@@ -3,17 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PostComponent } from './post/post.component';
-import { TestComponenComponent } from './test-componen/test-componen.component';
 import { FormsModule } from '@angular/forms';
-import { PostFormComponent } from './post-form/post-form.component';
+import { StyleDirective } from './directives/style.directive';
+import { IfnotDirective } from './directives/ifnot.directive';
+
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		TestComponenComponent,
-		PostComponent,
-		PostFormComponent,
+		StyleDirective,
+  IfnotDirective
 	],
 	imports: [
 		BrowserModule,
