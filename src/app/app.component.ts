@@ -1,25 +1,16 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { AppCounterService } from './services/app-counter.service';
+import { LocalCounterService } from './services/local-counter.service';
 
-export interface Post {
-	title: string
-	text: string
-}
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss']
+	styleUrls: ['./app.component.scss'],
+	providers: [LocalCounterService]
 })
 export class AppComponent {
-	p: Promise<string> = new Promise<string>(resolve => {
-		setTimeout(()=> {
-			resolve('Promise Resolved')
-		}, 5000)
-	})
+	constructor(public appCounterServise: AppCounterService,
+		public localCounterServise: LocalCounterService ) {
 
-	date: Observable<Date> = new Observable(obs=>{
-		setInterval(() => {
-			obs.next(new Date())
-		}, 1000)
-	})
+	}
 }
