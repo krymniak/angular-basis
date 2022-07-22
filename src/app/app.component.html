@@ -1,3 +1,49 @@
 <div class="container">
-	<h1>Angular Forms</h1>
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Angular Forms</h1>
+
+    <div class="form-control">
+      <label>Email</label>
+      <input type="text" placeholder="Email">
+      <div class="validation"></div>
+    </div>
+
+    <div class="form-control">
+      <label>password</label>
+      <input type="password" placeholder="Пароль">
+      <div class="validation"></div>
+    </div>
+
+    <div class="card">
+      <h2>Adress</h2>
+
+      <div class="form-control">
+        <label>Country</label>
+
+        <select>
+          <option value="uk">United Kingdom</option>
+          <option value="ua">Ukraine</option>
+          <option value="us">United States</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <input type="text">
+      </div>
+
+      <button class="btn" type="button">Choose capital</button>
+    </div>
+
+    <div class="card">
+      <h2>Your skills</h2>
+      <button class="btn" type="button">Add skill</button>
+      <div class="form-control">
+        <label></label>
+        <input type="text">
+      </div>
+    </div>
+
+    <button class="btn" type="submit">Send</button>
+
+  </form>
 </div>
