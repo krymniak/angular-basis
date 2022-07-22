@@ -16,4 +16,10 @@ export class AppComponent {
 		{title:'Beer', text:'The best beer in the world'},
 		{title:'Bread', text:'The best bread in the world'}
 	]
+	addPost() {
+		this.posts.unshift({
+			title:'Angular 14',
+			text:'The best language'
+		})
+	}
 }
