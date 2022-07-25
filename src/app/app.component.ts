@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
 			console.log('Submitted form', this.form)
 			const formData = { ...this.form.value }
 			console.log('Form Data', formData)
+			this.form.reset()
 		}
 	}
 	setCapital() {
