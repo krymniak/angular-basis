@@ -18,7 +18,7 @@
 			<div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="validation">
 				<small *ngIf="form.get('password')?.errors?.['required']">Password field cannot be empty </small>
 				<small *ngIf="form.get('password')?.errors?.['minlength']">
-					The length should be at least {{form.get('password')?.errors?.['minlength'].requiredLength}} characters. 
+					The length should be at least {{form.get('password')?.errors?.['minlength'].requiredLength}} characters.
 					The number of characters - {{form.get('password')?.errors?.['minlength'].actualLength}}
 				</small>
 			</div>
@@ -44,12 +44,12 @@
 			<button class="btn" type="button" (click)="setCapital()">Choose capital</button>
 		</div>
 
-		<div class="card">
+		<div class="card" formGroupName="skills">
 			<h2>Your skills</h2>
-			<button class="btn" type="button">Add skill</button>
-			<div class="form-control">
-				<label></label>
-				<input type="text">
+			<button class="btn" type="button" (click)="addSkill()">Add skill</button>
+			<div class="form-control" *ngFor="let control of form.get('skills').controls; let idx = index">
+				<label>Skill {{idx +1}}</label>
+				<input type="text" [formControlName]="idx">
 			</div>
 		</div>
 

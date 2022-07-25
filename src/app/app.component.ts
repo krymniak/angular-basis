@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-root',
@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-	form!: FormGroup
+	form: any = FormGroup
 	ngOnInit() {
 		this.form = new FormGroup({
 			email: new FormControl('', [
@@ -21,7 +21,8 @@ export class AppComponent implements OnInit {
 			address: new FormGroup({
 				country: new FormControl('ua'),
 				city: new FormControl('', Validators.required)
-			})
+			}),
+			skills: new FormArray([],)
 		})
 	}
 	submit() {
@@ -40,7 +41,11 @@ export class AppComponent implements OnInit {
 		const cityKey: any = this.form.get('address')?.get('country')?.value
 		const city: string = cityMap[cityKey as keyof typeof cityMap]
 		this.form.patchValue({
-			address:{city}
+			address: { city }
 		})
+	}
+	addSkill() {
+		const control = new FormControl('', Validators.required);
+		(this.form.get('skills') as FormArray).push(control)
 	}
 }
