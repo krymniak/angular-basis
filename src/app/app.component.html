@@ -10,6 +10,7 @@
 
 				<small *ngIf="form.get('email')?.errors?.['email']">Enter a valid email</small>
 				<small *ngIf="form.get('email')?.errors?.['restrictedEmails']">Email {{form.get('email').value}}restricted</small>
+				<small *ngIf="form.get('email')?.errors?.['uniqEmail']">Email {{form.get('email').value}}is already used</small>
 			</div>
 		</div>
 
@@ -54,7 +55,7 @@
 			</div>
 		</div>
 
-		<button class="btn" type="submit" [disabled]="form.invalid">Send</button>
+		<button class="btn" type="submit" [disabled]="form.invalid || form.pending">Send</button>
 
 	</form>
 </div>
