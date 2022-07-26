@@ -5,18 +5,18 @@
     <div class="form-control">
       <input type="text" placeholder="Название">
     </div>
-    <button class="btn">Добавить</button>
-    <button class="btn">Загрузить</button>
+    <button class="btn">Add</button>
+    <button class="btn">Download</button>
   </div>
 
   <hr>
 
-  <div class="card">
+  <div class="card" *ngFor="let todo of todos">
     <p>
-      <span class="completed">Название</span>
+      <span [class.completed]="todo.completed">{{todo.title | titlecase}}</span>
       <span>
-        <button class="btn btn-danger">Удалить</button>
-        <button class="btn">Завершить</button>
+        <button class="btn btn-danger">Delete</button>
+        <button class="btn" [disabled]="todo.completed">Finish</button>
       </span>
     </p>
   </div>

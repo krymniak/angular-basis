@@ -1,5 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import {Component, OnInit} from '@angular/core'
-
+export interface Todo {
+	completed: boolean
+	title: string
+	id?: number
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,7 +12,16 @@ import {Component, OnInit} from '@angular/core'
 })
 export class AppComponent implements OnInit {
 
-  ngOnInit() {
+	todos: Todo[] = []
 
+	constructor(private http:HttpClient) {
+
+	}
+  ngOnInit() {
+		this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
+		.subscribe(response => {
+			console.log(response)
+			this.todos = response
+		})
   }
 }
