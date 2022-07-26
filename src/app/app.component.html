@@ -1,16 +1,6 @@
 <div class="container">
-	<h1>Angular Services</h1>
-	<div class="card">
-		<h2>App counter: {{appCounterServise.counter}}</h2>
-		<button class="btn" (click)="appCounterServise.increase()">+</button>
-		<button class="btn" (click)="appCounterServise.decrease()">-</button>
-	</div>
-
-	<div class="card">
-		<h2>Local counter: {{localCounterServise.counter}}</h2>
-		<button class="btn" (click)="localCounterServise.increase()">+</button>
-		<button class="btn" (click)="localCounterServise.decrease()">-</button>
-	</div>
+	<h1>Angular NgModels</h1>
+	<app-switch [(ngModel)]="appState" (ngModelChange)="handleChange()"></app-switch>
 	<hr>
-	<app-counter></app-counter>
+	<p>{{appState}}</p>
 </div>

@@ -3,24 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { AppCounterService } from './services/app-counter.service';
-import { CounterComponent } from './counter/counter.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SwitchComponent } from './switch/switch.component';
+
 
 
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		CounterComponent,
+  SwitchComponent
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		FormsModule
+		FormsModule,
+		ReactiveFormsModule
 	],
 	providers: [
-		AppCounterService
 	],
 	bootstrap: [AppComponent]
 })

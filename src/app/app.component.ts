@@ -1,16 +1,13 @@
-import { Component } from '@angular/core';
-import { AppCounterService } from './services/app-counter.service';
-import { LocalCounterService } from './services/local-counter.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
-	providers: [LocalCounterService]
 })
 export class AppComponent {
-	constructor(public appCounterServise: AppCounterService,
-		public localCounterServise: LocalCounterService ) {
-
+	appState = 'on'
+	handleChange() {
+		console.log(this.appState)
 	}
 }
