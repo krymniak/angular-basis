@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
 	todos: Todo[] = []
 	loading = false
 	todoTitle = ''
+	error = ''
 
 	constructor(private todosService: TodosService) {
 
@@ -39,6 +40,10 @@ export class AppComponent implements OnInit {
 				console.log(response)
 				this.todos = response
 				this.loading = false
+			}, error => {
+				this.error = error.message
+			}, () => {
+
 			})
 	}
 	removeTodo(id: number) {
