@@ -1,12 +1,12 @@
-import {Directive, HostBinding, OnInit} from '@angular/core'
+import { Directive, HostBinding, OnInit } from '@angular/core'
 
 @Directive({
-  selector: '[appColor]'
+	selector: '[appColor]'
 })
 export class ColorDirective implements OnInit {
-  @HostBinding('style.color') color: string
+	@HostBinding('style.color') color!: string
 
-  ngOnInit(): void {
-    this.color = '#aaa'
-  }
+	ngOnInit(): void {
+		this.color = '#aaa'
+	}
 }
