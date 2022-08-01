@@ -42,4 +42,22 @@ describe('PostsComponent', () => {
 		component.add('Post title')
 		expect(component.message).toBe(error)
   })
+
+	it('should remove item post if user confirms', () => {
+		const spy = spyOn(service, 'remove').and.returnValue(EMPTY)
+		spyOn(window, 'confirm').and.returnValue(true)
+
+		component.delete(10)
+
+		expect(spy).toHaveBeenCalledWith(10)
+  })
+
+	it('should not remove item post if user does not confirm', () => {
+		const spy = spyOn(service, 'remove').and.returnValue(EMPTY)
+		spyOn(window, 'confirm').and.returnValue(false)
+
+		component.delete(10)
+
+		expect(spy).not.toHaveBeenCalled()
+  })
 })
