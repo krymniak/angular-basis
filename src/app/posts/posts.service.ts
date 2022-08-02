@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 export class PostsService {
   constructor(private http: HttpClient) {}
 
-  create(post: any): Observable<any>{
+  create(post): Observable<any> {
     return this.http.post(``, post);
   }
 
