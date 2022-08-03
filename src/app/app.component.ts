@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, group, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -32,10 +32,16 @@ import { Component } from '@angular/core';
 			]),
 			transition(':leave', [
 				style({opacity: 1}),
-				animate(750, style({
-					opacity: 0,
-					transform: 'scale(1.2)'
-				}))
+				group([
+					animate(750, style({
+						opacity: 0,
+						transform: 'scale(1.2)'
+					})),
+					animate(300, style({
+						color: '#000',
+						fontWeight: 'bold'
+					}))
+				]),
 			])
 		])
 	]
