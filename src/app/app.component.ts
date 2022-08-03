@@ -1,12 +1,10 @@
-import {Component, ViewChild} from '@angular/core'
-import { Meta, Title } from '@angular/platform-browser'
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  title = 'angular-unit-tests';
 }
-

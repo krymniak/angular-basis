@@ -1,63 +1,43 @@
-import { EMPTY, of, throwError } from "rxjs"
-import { PostsComponent } from "./posts.component"
-import { PostsService } from "./posts.service"
+import { HttpClientModule } from "@angular/common/http";
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from "@angular/core/testing";
+import { of } from "rxjs";
+import {PostsComponent} from "./posts.component";
+import {PostsService} from "./posts.service";
 
 describe('PostsComponent', () => {
-	let component: PostsComponent
-	let service: PostsService 
-	beforeEach(() => {
-		service = new PostsService(null!)
-		component = new PostsComponent(service)
-	})
-  it('should call fetch when ngOnInit', () => {
-		const spy = spyOn(service, 'fetch').and.callFake(() => {
-			return EMPTY
+	let fixture : ComponentFixture<PostsComponent>
+  let component: PostsComponent
+  let service: PostsService
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+			declarations: [PostsComponent],
+			providers: [PostsService],
+			imports: [HttpClientModule]
 		})
 
-		component.ngOnInit()
-		expect(spy).toHaveBeenCalled()
+		fixture = TestBed.createComponent(PostsComponent)
+		component = fixture.componentInstance
+		service = TestBed.get(PostsService)
   })
 
-	it('should update posts length after ngOnInit', () => {
-		const posts = [1, 2, 3, 4]
+	xit('shoupd fetch posts on ngOnInit', () => {
+		const posts = [1,2,3]
 		spyOn(service, 'fetch').and.returnValue(of(posts))
-		component.ngOnInit()
-		expect(component.posts.length).toBe(posts.length)
-  })
-
-	it('should add new post', () => {
-		const post = {title: 'test'}
-		const spy = spyOn(service, 'create').and.returnValue(of(post))
-
-		component.add(post.title)
-
-		expect(spy).toHaveBeenCalled()
-		expect(component.posts.includes(post)).toBeTruthy()
+		fixture.detectChanges()
+		expect(component.posts).toEqual(posts)
 	})
 
-	it('should update posts length after ngOnInit', () => {
-		const error = 'Error message'
-		spyOn(service, 'create').and.returnValue(throwError(error))
+	it('shoupd fetch posts on ngOnInit promise', fakeAsync(() => {
+		const posts = [1,2,3]
+		spyOn(service, 'fetchPromise').and.returnValue(Promise.resolve(posts))
+		tick()
+		expect(component.posts.length).toBe(posts.length)
+		// fixture.detectChanges()
+		// fixture.whenStable().then(() => {
+		// 	expect(component.posts.length).toBe(posts.length)
+		// })
+		
 
-		component.add('Post title')
-		expect(component.message).toBe(error)
-  })
-
-	it('should remove item post if user confirms', () => {
-		const spy = spyOn(service, 'remove').and.returnValue(EMPTY)
-		spyOn(window, 'confirm').and.returnValue(true)
-
-		component.delete(10)
-
-		expect(spy).toHaveBeenCalledWith(10)
-  })
-
-	it('should not remove item post if user does not confirm', () => {
-		const spy = spyOn(service, 'remove').and.returnValue(EMPTY)
-		spyOn(window, 'confirm').and.returnValue(false)
-
-		component.delete(10)
-
-		expect(spy).not.toHaveBeenCalled()
-  })
+	}))
 })
