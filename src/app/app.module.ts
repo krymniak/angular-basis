@@ -1,31 +1,24 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import {AppComponent} from './app.component';
-import {CounterComponent} from "./counter/counter.component";
-import {FormsModule} from "@angular/forms";
-import {PostsComponent} from "./posts/posts.component";
-import { RoutingComponent } from './routing/routing.component';
+import { AppComponent } from './app.component';
+import { FormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ColorDirective } from './directives/color.directive';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AnimateComponent } from './animate/animate.component';
 @NgModule({
-  declarations: [
-    AppComponent,
-    CounterComponent,
-    PostsComponent,
-    RoutingComponent,
-    NavbarComponent,
-    ColorDirective,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-		RouterModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		AnimateComponent,
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		RouterModule,
+		BrowserAnimationsModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule {
 }
